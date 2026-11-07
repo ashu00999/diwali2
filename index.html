@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehak ❤️ | Happy Diwali</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #24130f;
+  color: #fff4d9;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* DONO BACKGROUND PHOTOS ALAG-ALAG */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    url("https://github.com/ashu00999/diwali2/blob/main/Festive%20Diwali%20Couple%20Under%20Fireworks.png?raw=true"),
+    url("https://github.com/ashu00999/diwali2/blob/main/WhatsApp%20Image%202026-11-07%20at%202.36.31%20PM.jpeg?raw=true");
+
+  background-size: 50% 100%, 50% 100%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+
+  opacity: 0.82;
+  filter: brightness(1.02) blur(1px);
+  transform: scale(1.005);
+}
+
+/* HALKA OVERLAY, PHOTOS KO FADE NAHI KAREGA */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(30, 12, 8, 0.24);
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 35px 18px 60px;
+  text-align: center;
+}
+
+.date {
+  color: #ffe4a3;
+  letter-spacing: 2px;
+  font-size: 13px;
+  text-shadow: 0 2px 8px #000;
+}
+
+h1 {
+  color: #ffe4a3;
+  font-size: clamp(35px, 7vw, 60px);
+  line-height: 1.2;
+  margin: 22px 0 12px;
+  text-shadow: 0 3px 15px #3b160b;
+}
+
+.subtitle {
+  color: #fff4dc;
+  font-size: 17px;
+  line-height: 1.7;
+  text-shadow: 0 2px 8px #000;
+  margin-bottom: 30px;
+}
+
+.panel {
+  background: rgba(35, 15, 12, 0.88);
+  border: 1px solid rgba(255, 207, 116, 0.65);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+  backdrop-filter: blur(5px);
+}
+
+.letter {
+  color: #fff3df;
+  font-size: 17px;
+  line-height: 1.95;
+  text-align: left;
+}
+
+.letter p {
+  margin: 0 0 20px;
+}
+
+.highlight {
+  color: #ffd27d;
+  font-weight: bold;
+}
+
+.signature {
+  text-align: right;
+  color: #ffd27d;
+  font-size: 19px;
+  margin-top: 25px;
+  line-height: 1.7;
+}
+
+.laxmi-line {
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 14px;
+  color: #ffe1a0;
+  background: rgba(255, 190, 75, 0.10);
+  border: 1px solid rgba(255, 205, 110, 0.4);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+button {
+  margin-top: 28px;
+  border: 1px solid #ffe0a0;
+  background: linear-gradient(135deg, #a64b1e, #e59a36);
+  color: white;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 25px #e9a13b;
+}
+
+#promise {
+  display: none;
+  margin-top: 22px;
+  padding: 22px;
+  color: #ffe6b0;
+  background: rgba(255, 190, 75, 0.10);
+  border: 1px solid rgba(255, 207, 116, 0.5);
+  border-radius: 16px;
+  font-size: 18px;
+  line-height: 1.9;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PHOTO SECTION */
+.photo-section {
+  margin-top: 45px;
+}
+
+.photo-caption {
+  color: #fff0c9;
+  font-size: 19px;
+  line-height: 1.8;
+  padding: 18px;
+  margin-bottom: 22px;
+  background: rgba(35, 15, 12, 0.85);
+  border: 1px solid rgba(255, 207, 116, 0.6);
+  border-radius: 16px;
+  text-shadow: 0 2px 5px #000;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.photo-frame {
+  padding: 9px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff0ae, #bd792a, #ffe6a0);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 340px;
+  display: block;
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+.photo-label {
+  color: #ffe6b0;
+  font-size: 15px;
+  margin-top: 12px;
+  text-shadow: 0 2px 6px #000;
+}
+
+.footer {
+  color: #ffe6b0;
+  font-size: 15px;
+  margin-top: 40px;
+  text-shadow: 0 2px 8px #000;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  z-index: 4;
+  pointer-events: none;
+  animation: floatUp 7s linear forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(-110vh) rotate(40deg); opacity: 0; }
+}
+
+@media(max-width: 560px) {
+  body::before {
+    background-size: 50% 100%, 50% 100%;
+    opacity: 0.78;
+    filter: brightness(1.02) blur(1px);
+  }
+
+  .page {
+    padding: 25px 13px 45px;
+  }
+
+  .panel {
+    padding: 22px 17px;
+  }
+
+  .letter {
+    font-size: 16px;
+  }
+
+  .photos {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-frame img {
+    height: auto;
+    max-height: 430px;
+    object-fit: contain;
+  }
+
+  .photo-caption {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<main class="page">
+
+  <div class="date">8 November 2026 · Deepawali</div>
+
+  <h1>Happy Diwali,<br>Meri Gudiya❤️</h1>
+
+  <div class="subtitle">
+    Meri har dua, har khushi aur har roshni tumhare naam
+  </div>
+
+  <section class="panel">
+
+    <div class="letter">
+
+      <p>
+        Mehak, hamare <span class="highlight">5 saal</span> ke is khoobsurat
+        saath mein na jaane kitni yaadein, kitni baatein aur kitne ehsaas
+        jud gaye hain. Har guzarte saal ke saath meri bas yahi khwahish
+        rahi hai ki tum hamesha mere saath raho.
+      </p>
+
+      <p>
+        Is Diwali meri Bhagwan se bas yahi dua hai ki tumhari zindagi
+        hamesha khushiyon se roshan rahe. Tumhare chehre ki smile kabhi
+        kam na ho, tumhe kabhi kisi pareshani ka saamna na karna pade
+        aur tumhari har khwahish poori ho.
+      </p>
+
+      <p>
+        Kaash is Diwali hum door na hote. Kaash main tumhare saath
+        diye jalata, tumhare saath rangoli banata, tumhe mithai khilata
+        aur tumhari woh pyaari si smile apni aankhon se dekhta.
+      </p>
+
+      <p>
+        Aur meri sabse pyaari dua? Aane wale kuch saalon mein tum meri
+        <span class="highlight">patni</span> bankar mere saath ek hi ghar
+        mein raho. Phir har Diwali hum dono apne ghar ko milkar sajayein,
+        saath mein diye jalayein, aur har saal yunhi ek-doosre ka haath
+        pakad kar khushiyan manayein. ❤️
+      </p>
+
+      <p>
+        Main bas itna chahta hoon—tum khush raho, main tumhare saath
+        rahoon, aur hamari har aane wali Diwali ek saath ho.
+      </p>
+
+      <div class="laxmi-line">
+        Tum hi mere ghar ki Laxmi ho. Main nahi jaanta kab,
+        magar kuch time baad tum hi meri ghar ki Laxmi banke aaogi. ❤️
+      </div>
+
+      <div class="signature">
+        Tumhara Ashu❤️,<br>
+        jo tumse bahut pyaar karta hai ❤️
+      </div>
+
+    </div>
+
+    <button onclick="showPromise()">
+      Ek aakhri dua tumhare liye… 💌
+    </button>
+
+    <div id="promise">
+      Bhagwan kare hamara pyaar waqt ke saath aur gehra hota jaaye,
+      hamari dooriyan bas kal ki kahani ban jaayein,
+      aur zindagi ki har khushi hum ek saath manayein.
+
+      <br><br>
+
+      <span class="highlight">Ek aur Diwali saath mein. ❤️</span>
+    </div>
+
+  </section>
+
+  <!-- PHOTOS SECTION -->
+  <section class="photo-section">
+
+    <div class="photo-caption">
+      Maine yeh AI se banai hai image, magar woh time door nahi
+      jab hum dono aise real mein picture click karenge. 🥹❤️
+    </div>
+
+    <div class="photos">
+
+      <div>
+        <div class="photo-frame">
+          <img
+            src="https://github.com/ashu00999/diwali2/blob/main/Festive%20Diwali%20Couple%20Under%20Fireworks.png?raw=true"
+            alt="Our dream Diwali picture">
+        </div>
+        <div class="photo-label">Ek khoobsurat khwaab ❤️</div>
+      </div>
+
+      <div>
+        <div class="photo-frame">
+          <img
+            src="https://github.com/ashu00999/diwali2/blob/main/WhatsApp%20Image%202026-11-07%20at%202.36.31%20PM.jpeg?raw=true"
+            alt="Our special picture">
+        </div>
+        <div class="photo-label">Meri sabse pyaari Jaan❤️</div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="footer">
+    Made with endless love, only for you Mehak ❤️
+  </div>
+
+</main>
+
+<script>
+/* PROMISE BUTTON */
+function showPromise() {
+  const promise = document.getElementById("promise");
+
+  promise.style.display = "block";
+  promise.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+
+/* FLOATING HEARTS */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(createHeart, 700);
+
+/* FIREWORKS */
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+let width, height;
+let particles = [];
+
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function createFirework() {
+  const x = random(50, width - 50);
+  const y = random(50, height * 0.65);
+  const colors = ["#ffd166", "#ff8c42", "#ffec99", "#ff5e78", "#ffffff"];
+
+  for (let i = 0; i < 45; i++) {
+    const angle = (Math.PI * 2 * i) / 45;
+    const speed = random(1, 4);
+
+    particles.push({
+      x: x,
+      y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: random(35, 65),
+      maxLife: 65,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      size: random(1, 3)
+    });
+  }
+}
+
+function animateFireworks() {
+  ctx.clearRect(0, 0, width, height);
+
+  particles.forEach((p, index) => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.025;
+    p.vx *= 0.99;
+    p.vy *= 0.99;
+    p.life--;
+
+    ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+    ctx.fillStyle = p.color;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (p.life <= 0) {
+      particles.splice(index, 1);
+    }
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animateFireworks);
+}
+
+setInterval(createFirework, 1200);
+animateFireworks();
+</script>
+
+</body>
+</html>
