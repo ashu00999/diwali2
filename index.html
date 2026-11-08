@@ -94,7 +94,7 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* MAIN MESSAGE BOX - EXTRA TRANSPARENT */
+/* MAIN MESSAGE BOX */
 .panel {
   background: rgba(35, 15, 12, 0.18);
   border: 1px solid rgba(255, 207, 116, 0.55);
@@ -188,7 +188,7 @@ button:hover {
   margin-top: 45px;
 }
 
-/* PHOTO CAPTION - EXTRA TRANSPARENT */
+/* PHOTO CAPTION */
 .photo-caption {
   color: #fff0c9;
   font-size: 19px;
@@ -301,6 +301,230 @@ button:hover {
     background: rgba(35, 15, 12, 0.18);
   }
 }
+
+/* SURPRISE INTRO + LOVE QUESTIONS */
+#introScreen, #quizScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  text-align: center;
+  background: rgba(25, 10, 8, 0.55);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+#quizScreen {
+  display: none;
+  z-index: 21;
+}
+
+#introScreen.hide, #quizScreen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .7s ease, visibility .7s ease;
+}
+
+.intro-box, .quiz-box {
+  width: 100%;
+  max-width: 470px;
+  padding: 30px 20px;
+  border: 1px solid rgba(255, 220, 150, .75);
+  border-radius: 25px;
+  background: rgba(48, 20, 13, .72);
+  box-shadow: 0 0 35px rgba(255, 174, 66, .22);
+  animation: introAppear .8s ease;
+}
+
+@keyframes introAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.intro-sparkle {
+  font-size: 38px;
+  margin-bottom: 10px;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%,100% {
+    transform: scale(1) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.18) rotate(5deg);
+  }
+}
+
+.intro-title, .quiz-title {
+  color: #ffe4a3;
+  font-size: clamp(27px, 7vw, 38px);
+  line-height: 1.4;
+  margin: 8px 0 12px;
+  text-shadow: 0 3px 12px #000;
+}
+
+.intro-subtitle, .quiz-message {
+  color: #fff0d0;
+  font-size: 16px;
+  line-height: 1.8;
+  text-shadow: 0 2px 7px #000;
+  margin: 10px 0 18px;
+  min-height: 48px;
+}
+
+.button-arena {
+  position: relative;
+  width: 100%;
+  height: 145px;
+  margin: 0 auto;
+}
+
+#surpriseButton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  max-width: 95%;
+  margin: 0;
+  z-index: 2;
+  transition: left .32s ease, top .32s ease, box-shadow .3s ease;
+}
+
+#surpriseButton.final-button {
+  animation: finalGlow 1.4s infinite alternate;
+}
+
+@keyframes finalGlow {
+  from {
+    box-shadow: 0 0 10px #e9a13b;
+  }
+  to {
+    box-shadow: 0 0 28px #ffcf70;
+  }
+}
+
+.intro-small {
+  color: #ffdda0;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.quiz-box {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.quiz-emoji {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+.quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.quiz-actions button {
+  margin: 0;
+  min-width: 105px;
+}
+
+.quiz-actions .yes-btn {
+  background: linear-gradient(135deg, #267b45, #51ad69);
+  border-color: #b7f3bd;
+}
+
+.quiz-actions .no-btn {
+  background: linear-gradient(135deg, #9c302b, #d75b48);
+  border-color: #ffc0a8;
+}
+
+.quiz-actions .choice-btn {
+  min-width: 125px;
+}
+
+.quiz-actions button:active {
+  transform: scale(.96);
+}
+
+/* CRYING BABY */
+#cryingBaby {
+  position: fixed;
+  z-index: 40;
+  left: 50%;
+  bottom: -120px;
+  transform: translateX(-50%);
+  font-size: 76px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#cryingBaby.cry {
+  animation: babyPop 1.8s ease forwards;
+}
+
+@keyframes babyPop {
+  0% {
+    bottom: -120px;
+    opacity: 0;
+    transform: translateX(-50%) scale(.5);
+  }
+  25% {
+    bottom: 22%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+  65% {
+    bottom: 22%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    bottom: -120px;
+    opacity: 0;
+    transform: translateX(-50%) scale(.7);
+  }
+}
+
+.page.locked {
+  display: none;
+}
+
+@media(max-width:560px) {
+  .intro-box, .quiz-box {
+    padding: 25px 15px;
+  }
+
+  .intro-subtitle, .quiz-message {
+    font-size: 15px;
+  }
+
+  #surpriseButton {
+    font-size: 14px;
+    padding: 13px 18px;
+  }
+
+  .quiz-actions button {
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+}
+
 </style>
 </head>
 
@@ -308,7 +532,55 @@ button:hover {
 
 <canvas id="fireworks"></canvas>
 
-<main class="page">
+<!-- FIRST SURPRISE SCREEN -->
+<div id="introScreen">
+  <div class="intro-box">
+
+    <div class="intro-sparkle">🎁✨</div>
+
+    <h2 class="intro-title">Yeh raha surprise! ❤️</h2>
+
+    <p class="intro-subtitle" id="introMessage">
+      Tumhare liye kuch pyaara sa hai...<br>
+      Chalo dekho kya hai! 🥹
+    </p>
+
+    <div class="button-arena" id="buttonArena">
+      <button id="surpriseButton" onclick="handleSurprise()">
+        Surprise dekho 👀
+      </button>
+    </div>
+
+    <div class="intro-small">
+      Sirf tumhare liye, Mehak ❤️
+    </div>
+
+  </div>
+</div>
+
+<!-- LOVE QUESTIONS -->
+<div id="quizScreen">
+  <div class="quiz-box" id="quizBox">
+
+    <div class="quiz-emoji" id="quizEmoji">🥹❤️</div>
+
+    <h2 class="quiz-title" id="quizTitle">
+      Pehle yeh batao...
+    </h2>
+
+    <p class="quiz-message" id="quizMessage">
+      Mujhse pyaar karti ho ya nahi? ❤️
+    </p>
+
+    <div class="quiz-actions" id="quizActions"></div>
+
+  </div>
+</div>
+
+<div id="cryingBaby" aria-hidden="true">👶😭</div>
+
+<!-- ORIGINAL DIWALI PAGE -->
+<main class="page locked" id="mainPage">
 
   <div class="date">8 November 2026 · Deepawali</div>
 
@@ -423,11 +695,371 @@ button:hover {
 
 <script>
 
+/* SURPRISE INTRO AND LOVE QUIZ */
+
+let surpriseStage = 0;
+
+const introMessage = document.getElementById("introMessage");
+const surpriseButton = document.getElementById("surpriseButton");
+const buttonArena = document.getElementById("buttonArena");
+
+function moveSurpriseButton() {
+
+  const maxX = Math.max(
+    0,
+    buttonArena.clientWidth - surpriseButton.offsetWidth
+  );
+
+  const maxY = Math.max(
+    0,
+    buttonArena.clientHeight - surpriseButton.offsetHeight
+  );
+
+  const x = Math.random() * maxX + surpriseButton.offsetWidth / 2;
+  const y = Math.random() * maxY + surpriseButton.offsetHeight / 2;
+
+  surpriseButton.style.left = x + "px";
+  surpriseButton.style.top = y + "px";
+}
+
+function centerSurpriseButton() {
+
+  surpriseButton.style.left = "50%";
+  surpriseButton.style.top = "50%";
+
+  surpriseButton.classList.add("final-button");
+}
+
+function handleSurprise() {
+
+  if (surpriseStage === 0) {
+
+    introMessage.innerHTML =
+      "Main nahi dikhaunga! 😜<br>Pakad ke dikhao toh zara! 😂";
+
+    surpriseStage = 1;
+    moveSurpriseButton();
+
+  } else if (surpriseStage === 1) {
+
+    introMessage.innerHTML =
+      "Arey! Itni jaldi nahi milega! 🤭<br>Ek baar aur try karo!";
+
+    surpriseStage = 2;
+    moveSurpriseButton();
+
+  } else if (surpriseStage === 2) {
+
+    centerSurpriseButton();
+
+    surpriseButton.textContent =
+      "Achha theek hai, dekh lo surprise ❤️";
+
+    introMessage.innerHTML =
+      "Achha baba, maan gaya! 😂<br>Ab tumhare liye surprise hazir hai. 🥹";
+
+    surpriseStage = 3;
+
+  } else {
+
+    document.getElementById("introScreen").style.display = "none";
+    document.getElementById("quizScreen").style.display = "flex";
+
+    showLoveQuestion();
+
+  }
+}
+
+/* CRYING BABY ANIMATION */
+
+function showBaby() {
+
+  const baby = document.getElementById("cryingBaby");
+
+  baby.classList.remove("cry");
+
+  void baby.offsetWidth;
+
+  baby.classList.add("cry");
+}
+
+/* QUIZ SCREEN CONTROL */
+
+function setQuiz(title, message, emoji, buttons) {
+
+  document.getElementById("quizTitle").textContent = title;
+
+  document.getElementById("quizMessage").innerHTML = message;
+
+  document.getElementById("quizEmoji").textContent = emoji;
+
+  const actions = document.getElementById("quizActions");
+
+  actions.innerHTML = "";
+
+  buttons.forEach(item => {
+
+    const button = document.createElement("button");
+
+    button.textContent = item.label;
+    button.className = item.className || "";
+    button.onclick = item.action;
+
+    actions.appendChild(button);
+
+  });
+}
+
+/* QUESTION 1 */
+
+function showLoveQuestion() {
+
+  setQuiz(
+    "Pehle yeh batao... ❤️",
+    "Mujhse pyaar karti ho ya nahi? 🥺",
+    "💗",
+    [
+      {
+        label: "Yes ❤️",
+        className: "yes-btn",
+        action: showHowMuch
+      },
+      {
+        label: "No 🙄",
+        className: "no-btn",
+        action: () => {
+
+          showBaby();
+
+          setQuiz(
+            "Aisa jawab? 😭",
+            "Achhe se socho madam... ek baar phir batao! 🥺",
+            "👶😭",
+            [
+              {
+                label: "Yes ❤️",
+                className: "yes-btn",
+                action: showHowMuch
+              },
+              {
+                label: "No 😜",
+                className: "no-btn",
+                action: () => {
+                  showBaby();
+                  showLoveQuestion();
+                }
+              }
+            ]
+          );
+        }
+      }
+    ]
+  );
+}
+
+/* QUESTION 2 */
+
+function showHowMuch() {
+
+  setQuiz(
+    "Kitna pyaar karti ho? 😍",
+    "Sach-sach batana, koi cheating nahi! 😂",
+    "🥰",
+    [
+      {
+        label: "Kam 😒",
+        className: "choice-btn no-btn",
+        action: notEnoughLove
+      },
+      {
+        label: "Thoda bahut 🤏",
+        className: "choice-btn",
+        action: notEnoughLove
+      },
+      {
+        label: "Jyada ❤️",
+        className: "choice-btn",
+        action: notEnoughLove
+      },
+      {
+        label: "Unlimited ♾️",
+        className: "choice-btn yes-btn",
+        action: showForeverQuestion
+      }
+    ]
+  );
+}
+
+function notEnoughLove() {
+
+  showBaby();
+
+  setQuiz(
+    "Baby ro raha hai! 😭",
+    "Itna kam pyaar? Bechara baby ka dil toot gaya! 😂<br>Ek baar phir soch lo...",
+    "👶💧",
+    [
+      {
+        label: "Dobara choose karo ❤️",
+        className: "yes-btn",
+        action: showHowMuch
+      }
+    ]
+  );
+}
+
+/* QUESTION 3 */
+
+function showForeverQuestion() {
+
+  setQuiz(
+    "Achha ji! 🥹❤️",
+    "Kya tum mujhse hamesha aise hi pyaar karti rahogi?",
+    "💞",
+    [
+      {
+        label: "Yes ❤️",
+        className: "yes-btn",
+        action: foreverYes
+      },
+      {
+        label: "No 🙈",
+        className: "no-btn",
+        action: () => {
+
+          showBaby();
+
+          setQuiz(
+            "Nahi? 😭",
+            "Mera baby toh ro padega... ek baar phir soch lo! 🥺",
+            "👶😭",
+            [
+              {
+                label: "Yes, hamesha ❤️",
+                className: "yes-btn",
+                action: foreverYes
+              },
+              {
+                label: "No 😜",
+                className: "no-btn",
+                action: () => {
+                  showBaby();
+                  showForeverQuestion();
+                }
+              }
+            ]
+          );
+        }
+      }
+    ]
+  );
+}
+
+function foreverYes() {
+
+  setQuiz(
+    "Acha ji, itna pyaar! 😍",
+    "Phir toh main duniya ka sabse lucky insaan hoon. 🥹❤️",
+    "😘",
+    [
+      {
+        label: "Aage chalo ❤️",
+        className: "yes-btn",
+        action: showTogetherQuestion
+      }
+    ]
+  );
+}
+
+/* QUESTION 4 */
+
+function showTogetherQuestion() {
+
+  setQuiz(
+    "Ek last baat... ❤️",
+    "Mujhe kabhi chhod ke toh nahi jaogi? Hamesha mera saath dogi? Haan ya naa? 🥺",
+    "🤞❤️",
+    [
+      {
+        label: "Haan ❤️",
+        className: "yes-btn",
+        action: showFinalMessage
+      },
+      {
+        label: "Naa 🙈",
+        className: "no-btn",
+        action: () => {
+
+          showBaby();
+
+          setQuiz(
+            "Aisa mat bolo! 😭",
+            "Main toh hamesha tumhara saath chahta hoon... ek baar phir socho na. 🥺",
+            "👶😭",
+            [
+              {
+                label: "Haan, hamesha ❤️",
+                className: "yes-btn",
+                action: showFinalMessage
+              },
+              {
+                label: "Naa 😜",
+                className: "no-btn",
+                action: () => {
+                  showBaby();
+                  showTogetherQuestion();
+                }
+              }
+            ]
+          );
+        }
+      }
+    ]
+  );
+}
+
+/* FINAL LOVE MESSAGE */
+
+function showFinalMessage() {
+
+  setQuiz(
+    "I love you so much, baby! ❤️",
+    "Maine yeh tumhare liye special banaya hai. Isko achhe se dekhna, okay? 🥹❤️<br><br>Tum meri sabse pyaari khushi ho. Hamesha muskurati rehna. 💗",
+    "💝✨",
+    [
+      {
+        label: "Ab asli surprise dekho 🎆",
+        className: "yes-btn",
+        action: revealDiwaliPage
+      }
+    ]
+  );
+}
+
+/* SHOW ORIGINAL DIWALI PAGE */
+
+function revealDiwaliPage() {
+
+  document.getElementById("quizScreen").style.display = "none";
+
+  const mainPage = document.getElementById("mainPage");
+
+  mainPage.classList.remove("locked");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
 /* PROMISE BUTTON */
+
 function showPromise() {
+
   const promise = document.getElementById("promise");
 
   promise.style.display = "block";
+
   promise.scrollIntoView({
     behavior: "smooth",
     block: "center"
@@ -435,13 +1067,19 @@ function showPromise() {
 }
 
 /* FLOATING HEARTS */
+
 function createHeart() {
+
   const heart = document.createElement("div");
+
   heart.className = "heart";
+
   heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
 
   heart.style.left = Math.random() * 100 + "vw";
+
   heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
   heart.style.animationDuration = (5 + Math.random() * 4) + "s";
 
   document.body.appendChild(heart);
@@ -452,31 +1090,49 @@ function createHeart() {
 setInterval(createHeart, 700);
 
 /* FIREWORKS */
+
 const canvas = document.getElementById("fireworks");
+
 const ctx = canvas.getContext("2d");
 
 let width, height;
+
 let particles = [];
 
 function resizeCanvas() {
+
   width = canvas.width = window.innerWidth;
+
   height = canvas.height = window.innerHeight;
 }
 
 window.addEventListener("resize", resizeCanvas);
+
 resizeCanvas();
 
 function random(min, max) {
+
   return Math.random() * (max - min) + min;
 }
 
 function createFirework() {
+
   const x = random(50, width - 50);
+
   const y = random(50, height * 0.65);
-  const colors = ["#ffd166", "#ff8c42", "#ffec99", "#ff5e78", "#ffffff"];
+
+  const colors = [
+    "#ffd166",
+    "#ff8c42",
+    "#ffec99",
+    "#ff5e78",
+    "#ffffff"
+  ];
 
   for (let i = 0; i < 45; i++) {
+
     const angle = (Math.PI * 2 * i) / 45;
+
     const speed = random(1, 4);
 
     particles.push({
@@ -493,21 +1149,31 @@ function createFirework() {
 }
 
 function animateFireworks() {
+
   ctx.clearRect(0, 0, width, height);
 
   particles.forEach((p, index) => {
+
     p.x += p.vx;
+
     p.y += p.vy;
+
     p.vy += 0.025;
+
     p.vx *= 0.99;
+
     p.vy *= 0.99;
+
     p.life--;
 
     ctx.globalAlpha = Math.max(0, p.life / p.maxLife);
+
     ctx.fillStyle = p.color;
 
     ctx.beginPath();
+
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
     ctx.fill();
 
     if (p.life <= 0) {
@@ -516,10 +1182,12 @@ function animateFireworks() {
   });
 
   ctx.globalAlpha = 1;
+
   requestAnimationFrame(animateFireworks);
 }
 
 setInterval(createFirework, 1200);
+
 animateFireworks();
 
 </script>
